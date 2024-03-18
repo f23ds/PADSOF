@@ -107,6 +107,10 @@ public class SalaClimatizada extends Sala{
      * @param aforo2 aforo de la segunda subsala
      * @param numTomasCorriente1 numero de tomas de la primera subsala
      * @param numTomasCorriente2 numero de tomas de la segunda subsala
+     * @param t1 temperatura de la primera subsala
+     * @param t2 temperatura de la segunda subsala
+     * @param h1 humedad de la primera subsala
+     * @param h2 humedad de la segunda subsala
      * @return OK o ERROR en funcion de si hay ido bien o mal
      */
     public Status dividirSala(float ancho1, float ancho2, int aforo1, int aforo2, int numTomasCorriente1, int numTomasCorriente2, Temperatura t1, Temperatura t2, Humedad h1, Humedad h2){
@@ -116,5 +120,7 @@ public class SalaClimatizada extends Sala{
 
         subsala1 = new SalaClimatizada(aforo1, numTomasCorriente1, new Dimensiones(ancho1, dim.getLargo(), dim.getAlto()), t1, h1);
         subsala2 = new SalaClimatizada(aforo2, numTomasCorriente2, new Dimensiones(ancho2, dim.getLargo(), dim.getAlto()), t2, h2);
+
+        return Status.OK;
     }
 }

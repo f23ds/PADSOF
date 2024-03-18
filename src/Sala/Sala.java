@@ -12,7 +12,8 @@ public abstract class Sala {
     protected int aforo;
     protected int numTomasCorriente;
     protected Dimensiones dim;
-    protected Collection
+    protected Sala subsala1;
+    protected Sala subsala2;
 
     /**
      * Constructor de la clase sala recibiendo como argumento un objeto Dimensiones
@@ -122,22 +123,4 @@ public abstract class Sala {
     }
 
 
-    /**
-     * Divide la sala en otras dos setteando los atributos subsala1 y subsala2 
-     * 
-     * @param ancho1 ancho de la primera subsala
-     * @param ancho2 ancho de la segunda subsala
-     * @param aforo1 aforo de la primera subsala
-     * @param aforo2 aforo de la segunda subsala
-     * @param numTomasCorriente1 numero de tomas de la primera subsala
-     * @param numTomasCorriente2 numero de tomas de la segunda subsala
-     * @return OK o ERROR en funcion de si hay ido bien o mal
-     */
-    public Status dividirSala(float ancho1, float ancho2, int aforo1, int aforo2, int numTomasCorriente1, int numTomasCorriente2){
-        if(ancho1 + ancho2 != dim.getAncho() || aforo1 + aforo2 != aforo || numTomasCorriente1 + numTomasCorriente2 != numTomasCorriente){
-            return Status.ERROR;
-        }
-
-        subsala1 = new Sala((id+1), aforo1, numTomasCorriente1, new Dimensiones(ancho2, dim.getLargo(), dim.getAlto()));
-    }
-}
+   
