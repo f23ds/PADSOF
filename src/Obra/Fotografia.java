@@ -1,11 +1,11 @@
 package Obra;
 
 public class Fotografia extends Obra {
-    private Tipofotografia tipo;
+    private TipoFotografia tipo;
     private Temperatura temp;
     private Humedad hum;
 
-    public Fotografia(String nombre, String autor, int anio, boolean propia, String poliza, Tipofotografia tipo,
+    public Fotografia(String nombre, String autor, int anio, boolean propia, String poliza, TipoFotografia tipo,
             float ancho, float largo, float alto, float tempMin, float tempMax, float humMin, float humMax) {
         super(nombre, autor, anio, propia, poliza, ancho, largo, alto);
 
@@ -14,7 +14,7 @@ public class Fotografia extends Obra {
         this.hum = Humedad(humMin, humMax);
     }
 
-    public Fotografia(String nombre, String autor, int anio, boolean propia, String poliza, Tipofotografia tipo,
+    public Fotografia(String nombre, String autor, int anio, boolean propia, String poliza, TipoFotografia tipo,
             Dimensiones dim, Temperatura temp, Humedad hum) {
         super(nombre, autor, anio, propia, poliza, dim);
 
@@ -39,11 +39,11 @@ public class Fotografia extends Obra {
         this.hum = hum;
     }
 
-    public Tipofotografia getTipo() {
+    public TipoFotografia getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipofotografia tipo) {
+    public void setTipo(TipoFotografia tipo) {
         this.tipo = tipo;
     }
 }

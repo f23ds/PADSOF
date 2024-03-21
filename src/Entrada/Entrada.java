@@ -1,6 +1,6 @@
 package Entrada;
 
-import java.time.LocalDateTime;
+import java.time.*;
 
 /**
  * Clase para dar soporte a la entrada
@@ -9,42 +9,58 @@ public class Entrada {
 
   private int numEntradas;
   private float precioCompra;
-  private LocalDateTime fechaHora;
+  private LocalDate fecha;
+  private LocalTime hora;
 
   /**
    * Constructor de la clase entrada
    * @param numEntradas que se incluyen
    * @param precioCompra de las entradas
-   * @param fechaHora de la expedición de la entrada
+   * @param fecha de compra
+   * @param hora de la exposición
    */
-  public Entrada(int numEntradas, float precioCompra, LocalDateTime fechaHora) {
+  public Entrada(
+    int numEntradas,
+    float precioCompra,
+    LocalDate fecha,
+    LocalTime hora
+  ) {
     this.numEntradas = numEntradas;
     this.precioCompra = precioCompra;
-    this.fechaHora = fechaHora;
+    this.fecha = fecha;
+    this.hora = hora;
   }
 
   /**
-   * Getter del atributo 
-   * @return
+   * Getter del atributo numEntradas
+   * @return numEntradas
    */
   public int getNumEntradas() {
     return numEntradas;
   }
 
   /**
-   * Getter del atributo 
-   * @return
+   * Getter del atributo precioCompra
+   * @return precioCompra
    */
   public float getPrecioCompra() {
     return precioCompra;
   }
 
   /**
-   * Getter del atributo 
-   * @return
+   * Getter del atributo fecha
+   * @return fecha
    */
-  public LocalDateTime getFechaHora() {
-    return fechaHora;
+  public LocalDate getFecha() {
+    return fecha;
+  }
+
+  /**
+   * Getter del atributo hora
+   * @param hora
+   */
+  public LocalTime getHora() {
+    return hora;
   }
 
   /**
@@ -56,7 +72,7 @@ public class Entrada {
   }
 
   /**
-   * Setter del atributo precioCompra 
+   * Setter del atributo precioCompra
    * @param precioCompra
    */
   public void setPrecioCompra(float precioCompra) {
@@ -64,10 +80,18 @@ public class Entrada {
   }
 
   /**
-   * Setter del atributo fechaHora
-   * @param fechaHora
+   * Setter del atributo fecha
+   * @param fecha
    */
-  public void setFechaHora(LocalDateTime fechaHora) {
-    this.fechaHora = fechaHora;
+  public void setFecha(LocalDate fecha) {
+    this.fecha = fecha;
+  }
+
+  /**
+   * Setter del atributo hora
+   * @param hora
+   */
+  public void setHora(LocalTime hora) {
+    this.hora = hora;
   }
 }
