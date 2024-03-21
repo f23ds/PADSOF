@@ -1,0 +1,357 @@
+<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><element><id>UMLClass</id><coordinates><x>636</x><y>528</y><w>282</w><h>240</h></coordinates><panel_attributes>Sistema
+--
+_- sistema: Sistema_
+--
+_+ getInstance(): Sitstema_
++ cambiarHorario(horario: Horario): void
++ loginCliente(DNI: String, pwd: String): Cliente
++ loginEmpleado(DNI: String, pwd: String): Empleado
++ loginGestor(usuario: String, pwd: String): Gestor
++ registrarEmpleado(emp: Empleado): void
++ aniadirExposicion(exp: Exposicion): void
++ aniadirObra(obra: Obra): void
++ aniadirSala(sala: Sala): void
++ registrarCliente(cliente: Cliente): void
++ buscarPorPermanente(): Permanente[]
++ buscarPorTemporal(): Temporal[]
++ buscarPorTipo(): Exposicion[]
++ buscarPorFecha(inicio: Date, fin: Date): Exposicion[]
++ getNumEntradasTotales(inicio: Date, fin: Date): int
++ getDineroRecaudadoTotal(inicio: Date, fin: Date): double
++ enviarNotificacionSist(noti: Notificacion): void
++ enviarNotificacionEmp(noti: Notificacion): void
++ notificarGanadorSorteo(noti: notificacion): void
++ leerObraDeFichero(nombre: String): Obra
++ exposicionesDisponibles(): Exposiciones []
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>318</x><y>858</y><w>126</w><h>42</h></coordinates><panel_attributes>/Usuario/
+--
+- pwd: String
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>156</x><y>936</y><w>144</w><h>72</h></coordinates><panel_attributes>Cliente
+--
+- DNI: String
+- recibirNoficacionesEmpleado: boolean
+--
++ verNotificaciones(): Notificaciones[*]
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>468</x><y>936</y><w>114</w><h>36</h></coordinates><panel_attributes>Gestor
+--
+- usuario: String 
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>78</x><y>834</y><w>126</w><h>54</h></coordinates><panel_attributes>Notificación
+--
+- emisor: string
+- cuerpo: string
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>312</x><y>936</y><w>144</w><h>108</h></coordinates><panel_attributes>Empleado
+--
+- DNI: String
+- NSS: int
+- dirección: String
+- numCuenta: long
+- enviarNotificaciones: boolean
+- cambiarClimatizacion: boolean
+- venderEntradas: boolean
+--
++ cambiarDireccion(dir: String): void
++ cambiarNumCuenta(num: long): void
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>222</x><y>894</y><w>168</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>260;10;260;40;10;40;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>372</x><y>894</y><w>186</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40;290;40;290;70</additional_attributes></element><element><id>Relation</id><coordinates><x>372</x><y>894</y><w>18</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>102</x><y>882</y><w>66</w><h>96</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>90;140;10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>102</x><y>882</y><w>66</w><h>66</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+- notificaciones</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>372</x><y>690</y><w>276</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>440;10;10;10;10;280</additional_attributes></element><element><id>Relation</id><coordinates><x>372</x><y>774</y><w>66</w><h>96</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1
+- usuarioActivo</panel_attributes><additional_attributes>10;140;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>60</x><y>678</y><w>588</w><h>366</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>960;10;470;10;470;220;10;220;10;590;270;590;270;550</additional_attributes></element><element><id>Relation</id><coordinates><x>48</x><y>666</y><w>600</w><h>408</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>980;10;470;10;470;220;10;220;10;660;570;660;570;630</additional_attributes></element><element><id>Relation</id><coordinates><x>36</x><y>654</y><w>612</w><h>432</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>1000;10;470;10;470;220;10;220;10;700;850;700;850;530</additional_attributes></element><element><id>Relation</id><coordinates><x>138</x><y>1002</y><w>102</w><h>42</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+- clientes</panel_attributes><additional_attributes>140;10;140;50;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>306</x><y>1038</y><w>102</w><h>36</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+- empleados</panel_attributes><additional_attributes>140;10;140;40;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>462</x><y>966</y><w>120</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- gestor</panel_attributes><additional_attributes>140;10;140;180;10;180</additional_attributes></element><element><id>UMLClass</id><coordinates><x>882</x><y>840</y><w>132</w><h>132</h></coordinates><panel_attributes>/Obra/
+--
+- nombre: String
+- autor: String
+- añoRealización: int
+- propia: boolean
+- pólizaSeguro: String
+
+--
++ exponer(Exposicion: exp): void
++ retirar(): void
++ almacenar(): void
++ restaurar(): void
++ prestar(): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>672</x><y>1002</y><w>126</w><h>42</h></coordinates><panel_attributes>Pintura
+--
+- técnica: String
+- temp: int
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>816</x><y>1002</y><w>126</w><h>42</h></coordinates><panel_attributes>Escultura
+--
+- material: String
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>960</x><y>1002</y><w>126</w><h>42</h></coordinates><panel_attributes>Fotografía
+--
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1104</x><y>1002</y><w>126</w><h>42</h></coordinates><panel_attributes>Audiovisual
+--
+- idioma: String
+- duracion: int
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1086</x><y>840</y><w>126</w><h>84</h></coordinates><panel_attributes>&lt;&lt;Enumeracion&gt;&gt;
+EstadosObra
+--
++ ALMACEN
++ RETIRADA
++ PRESTADA
++ EXPOSICION
++ ENRESTAURACION
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1524</x><y>1080</y><w>126</w><h>66</h></coordinates><panel_attributes>Dimensiones
+--
+- ancho: float
+- largo: float
+- alto: float
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>996</x><y>1074</y><w>96</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Enumeracion&gt;&gt;
+TipoFotografia
+--
++ BYN
++ COLOR
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1230</x><y>1086</y><w>120</w><h>54</h></coordinates><panel_attributes>Temperatura
+--
+- tempMIn: int
+- tempMax: int
+--
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1368</x><y>1086</y><w>126</w><h>54</h></coordinates><panel_attributes>Humedad
+--
+- humedadMin: int
+- humedadMax: int
+--
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>942</x><y>966</y><w>90</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;30;130;30;130;60</additional_attributes></element><element><id>Relation</id><coordinates><x>942</x><y>966</y><w>234</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;30;370;30;370;60</additional_attributes></element><element><id>Relation</id><coordinates><x>738</x><y>966</y><w>222</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>350;10;350;30;10;30;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>864</x><y>966</y><w>96</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;10;140;30;10;30;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1008</x><y>882</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- estado
+</panel_attributes><additional_attributes>130;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>828</x><y>762</y><w>126</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90;190;90;190;130</additional_attributes></element><element><id>Relation</id><coordinates><x>858</x><y>804</y><w>102</w><h>48</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+- obras</panel_attributes><additional_attributes>140;60;140;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1038</x><y>1038</y><w>42</w><h>48</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- estado
+</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>726</x><y>1038</y><w>570</w><h>180</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1
+- temp</panel_attributes><additional_attributes>910;170;910;280;10;280;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>858</x><y>1038</y><w>474</w><h>168</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1
+- temp</panel_attributes><additional_attributes>750;170;750;260;10;260;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1266</x><y>1134</y><w>180</w><h>72</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1
+- humedad</panel_attributes><additional_attributes>260;10;260;100;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>1266</x><y>1134</y><w>210</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..1
+- humedad
+</panel_attributes><additional_attributes>310;10;310;120;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1446</x><y>1140</y><w>204</w><h>78</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- dim</panel_attributes><additional_attributes>320;10;320;110;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>912</x><y>1038</y><w>672</w><h>156</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+																																																																																																																																																																																																																																																																																																																														- dim</panel_attributes><additional_attributes>1100;180;1100;240;110;240;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1416</x><y>1140</y><w>198</w><h>66</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- dim</panel_attributes><additional_attributes>310;10;310;90;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>1062</x><y>1038</y><w>492</w><h>144</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+																																																																																																																																																																																																																																							- dim</panel_attributes><additional_attributes>800;180;800;220;130;220;130;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1524</x><y>378</y><w>198</w><h>162</h></coordinates><panel_attributes>/Exposición/
+--
+- nombre: String
+- descr: String
+- autor: String
+--
++ aniadirDescuento(desc: Descuento): void
++ quitarDescuento(): void
++ aniadirSorteo(sorteo: Sorteo): void
++ quitarSorteo(): void
++ getNumEntradas(inicio: Date, fin: Date): int
++ getDineroRecaudado(inicio: Date, fin: Date): double
++ comprarEntrada(ent: Comprada): void
++ venderEntrada(ent: Entrada)
++ getTipo(): TipoDeObra [1..4]: void
++ publicar(): void
++ getEntradasPorHora(fecha: Date, hora: Time): int
+/+ cancelar(): void/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1644</x><y>576</y><w>156</w><h>60</h></coordinates><panel_attributes>Permanente
+--
+--
++ interrumpir(inicio: Date, fin: Date): void
++ cancelar(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1452</x><y>576</y><w>156</w><h>90</h></coordinates><panel_attributes>Temporal
+--
+- fInicio: Date
+- fFinal: Date
+--
++ cancelar(): void
++ prorrogar(fecha: Date)
++ comenzar(): void
++ terminar(): void
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1764</x><y>444</y><w>90</w><h>66</h></coordinates><panel_attributes>&lt;&lt;Enumeracion&gt;&gt;
+TipoDeObra
+--
++ PINTURA
++ ESCULTURA
++ FOTOGRAFIA
++ AUDIOVISUAL</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1344</x><y>360</y><w>126</w><h>96</h></coordinates><panel_attributes>&lt;&lt;Enumerate&gt;&gt;
+EstadosExposicion
+--
++ EN_CREACIÓN
++ DISPONIBLE
++ COMENZADA
++ SINCOMENZAR
++ CANCELADA
++ TERMINADA
++ INTERRUMPIDA
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>876</x><y>336</y><w>690</w><h>204</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;320;10;270;190;270;720;10;1130;10;1130;70</additional_attributes></element><element><id>Relation</id><coordinates><x>1440</x><y>330</y><w>132</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+- exposiciones</panel_attributes><additional_attributes>190;80;190;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1530</x><y>534</y><w>114</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>170;10;170;30;10;30;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>1626</x><y>534</y><w>96</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;30;140;30;140;70</additional_attributes></element><element><id>Relation</id><coordinates><x>1464</x><y>402</y><w>72</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- estado</panel_attributes><additional_attributes>10;20;100;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>684</x><y>126</y><w>222</w><h>96</h></coordinates><panel_attributes>/Sorteo/
+--
+- nEntradas: int
+- fInicioInscripcion: Date
+- fFinInscripcion: Date
+
+--
++ inscribirse(part: Participante): void
++ sortear(): Participante
++ notificarGanador(part: Participante, noti: notificacion): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>474</x><y>126</y><w>126</w><h>66</h></coordinates><panel_attributes>Participante
+--
+1o2Entradas: int
+
+--
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>564</x><y>264</y><w>126</w><h>42</h></coordinates><panel_attributes>SorteoFechaHora
+--
+- fecha: Date
+- hora: Time
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>732</x><y>264</y><w>126</w><h>42</h></coordinates><panel_attributes>SorteoPlazoDado
+--
+- fInicio: Date
+- fFin: Date
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>900</x><y>264</y><w>126</w><h>42</h></coordinates><panel_attributes>SorteoMientrasDureExp
+--
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>156</y><w>738</w><h>234</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>1210;370;1210;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>900</x><y>150</y><w>114</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+-sorteo</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>594</x><y>144</y><w>102</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>150;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>594</x><y>138</y><w>84</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+- participantes</panel_attributes><additional_attributes>10;20;120;20</additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>216</y><w>180</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40;280;40;280;80</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>216</y><w>180</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>280;10;280;40;10;40;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>216</y><w>18</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>0</x><y>144</y><w>486</w><h>864</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>790;10;10;10;10;1420;260;1420</additional_attributes></element><element><id>Relation</id><coordinates><x>1620</x><y>288</y><w>54</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+-exposicion</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>396</y><w>126</w><h>66</h></coordinates><panel_attributes>Entrada
+--
+- numEntradas: int
+- precioCompra: double
+- fecha: Date
+- hora: Time
+
+
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>492</y><w>126</w><h>48</h></coordinates><panel_attributes>Comprada
+--
+- numTarjeta: int
+--
++ devolverDinero(): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>288</y><w>1176</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>1940;150;1940;10;1450;10;1240;120;10;120;10;180</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>456</y><w>18</w><h>48</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>18</x><y>510</y><w>354</w><h>486</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>570;10;10;10;10;790;230;790</additional_attributes></element><element><id>Relation</id><coordinates><x>18</x><y>972</y><w>150</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- cliente</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>420</y><w>192</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>300;180;300;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>18</x><y>984</y><w>150</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- cliente</panel_attributes><additional_attributes>230;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>480</x><y>414</y><w>114</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+- entradas</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>420</x><y>348</y><w>114</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+- entradas</panel_attributes><additional_attributes>10;80;10;20;170;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1338</x><y>918</y><w>156</w><h>42</h></coordinates><panel_attributes>Sala Climatizada
+--
++ cambiarTemperatura(temp: Temperatura)
++ cambiarHumedad(humedad: Humedad)
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1530</x><y>918</y><w>126</w><h>42</h></coordinates><panel_attributes>Sala No Climatizada
+--
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1416</x><y>828</y><w>96</w><h>102</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;10;140;90;10;90;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>1494</x><y>828</y><w>102</w><h>102</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;90;150;90;150;150</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1404</x><y>744</y><w>180</w><h>90</h></coordinates><panel_attributes>/Sala/
+--
+- id: int
+- aforo: int
+- numTomasCorriente: int
+--
++ dividirsala(subsala1: Sala, subsala2: Sala): void
++ cambiarAforo(aforo: int): void
++ cambiarNumTomas(num: int): void
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>966</x><y>468</y><w>570</w><h>384</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>930;10;450;10;10;550;10;620</additional_attributes></element><element><id>Relation</id><coordinates><x>966</x><y>666</y><w>120</w><h>186</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+- obras</panel_attributes><additional_attributes>10;290;10;220;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1248</x><y>486</y><w>288</w><h>348</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>460;10;10;10;10;560;260;560</additional_attributes></element><element><id>Relation</id><coordinates><x>1248</x><y>810</y><w>168</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+- salas</panel_attributes><additional_attributes>260;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1380</x><y>480</y><w>144</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- exposicion</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1578</x><y>756</y><w>156</w><h>372</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- dim</panel_attributes><additional_attributes>120;600;210;600;210;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1326</x><y>954</y><w>66</w><h>144</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- temperatura</panel_attributes><additional_attributes>10;220;10;80;90;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1410</x><y>954</y><w>54</w><h>144</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- humedad</panel_attributes><additional_attributes>10;220;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1962</x><y>210</y><w>126</w><h>42</h></coordinates><panel_attributes>/Descuento/
+--
+descuento: double
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1878</x><y>300</y><w>126</w><h>42</h></coordinates><panel_attributes>DescuentoPorAntelación
+--
+nMeses: int
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2034</x><y>300</y><w>126</w><h>42</h></coordinates><panel_attributes>DescuentoPorCompraEntradas
+--
+nEntradas: int
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1938</x><y>246</y><w>96</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>140;10;140;60;10;60;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>2016</x><y>246</y><w>102</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60;150;60;150;90</additional_attributes></element><element><id>Relation</id><coordinates><x>1680</x><y>228</y><w>294</w><h>162</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;250;10;10;470;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1842</x><y>222</y><w>132</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..2
+- descuentos</panel_attributes><additional_attributes>200;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1374</x><y>696</y><w>72</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>50;130;10;130;10;10;100;10;100;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1404</x><y>696</y><w>72</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+m1=0..2
+- subsalas</panel_attributes><additional_attributes>50;80;50;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>744</x><y>408</y><w>126</w><h>48</h></coordinates><panel_attributes>Horario
+--
+- apertura: Time
+- cierre: Time
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>786</x><y>450</y><w>18</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;130;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>786</x><y>450</y><w>48</w><h>72</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- horario</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>Relation</id><coordinates><x>864</x><y>96</y><w>210</w><h>492</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>90;800;320;800;330;10;10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>864</x><y>90</y><w>96</w><h>48</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+- sorteos</panel_attributes><additional_attributes>10;60;10;20;140;20</additional_attributes></element><element><id>Relation</id><coordinates><x>912</x><y>660</y><w>504</w><h>144</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;200;10;500;220;820;220</additional_attributes></element><element><id>Relation</id><coordinates><x>1278</x><y>780</y><w>138</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
+m1=*
+- salas</panel_attributes><additional_attributes>210;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1380</x><y>462</y><w>144</w><h>24</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- exposicion</panel_attributes><additional_attributes>220;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>738</x><y>0</y><w>126</w><h>42</h></coordinates><panel_attributes>&lt;&lt;Enumeracion&gt;&gt;
+EstadosSorteo
+--
++ ACTIVO
++ FINALIZADO
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>792</x><y>36</y><w>42</w><h>102</h></coordinates><panel_attributes>lt=&lt;-
+m1=
+- estado</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element></diagram>
