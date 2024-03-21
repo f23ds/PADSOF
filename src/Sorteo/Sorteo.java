@@ -1,21 +1,27 @@
 package Sorteo;
 
-import java.sql.Date;
 import java.util.*;
+
+import Entrada.Comprada;
+
 import java.time.*;
+
+import Utils.*;
 
 public abstract class Sorteo {
     private int nEntradas;
     private LocalDate fInicioInscripcion; 
     private LocalDate fFinInscripcion;
-    private Collection<Participante> participantes = new ArrayList<>();
+    private List<Participante> participantes;
+    private EstadosSorteo estado; 
+    private List<UUID> codigos; // generado con uuid.randomUUID();
 
-    public Sorteo(int nEntradas, LocalDate fInicioInscripcion, LocalDate fFinInscripcion,
-            Collection<Participante> participantes) {
+    public Sorteo(int nEntradas, LocalDate fInicioInscripcion, LocalDate fFinInscripcion) {
         this.nEntradas = nEntradas;
         this.fInicioInscripcion = fInicioInscripcion;
         this.fFinInscripcion = fFinInscripcion;
-        this.participantes = participantes;
+        participantes = new ArrayList<Participante>();
+        codigos = new ArrayList<>();
     }
 
     public int getnEntradas() {
@@ -24,6 +30,18 @@ public abstract class Sorteo {
 
     public void setnEntradas(int nEntradas) {
         this.nEntradas = nEntradas;
+    }
+
+    public void setParticipantes(List<Participante> participantes) {
+        this.participantes = participantes;
+    }
+
+    public EstadosSorteo getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadosSorteo estado) {
+        this.estado = estado;
     }
 
     public LocalDate getfInicioInscripcion() {
@@ -51,14 +69,50 @@ public abstract class Sorteo {
 
         if (fInicioInscripcion.isBefore(fechaActual) && fFinInscripcion.isAfter(fechaActual)) {
             this.participantes.add(participante);
-            return OK;
+            return Status.OK;
         }
 
-        return ERROR;      
+        if (estado == EstadosSorteo.FINALIZADO) {
+            return Status.ERROR;
+        }
+
+        participantes.add(participante);
+
+        return Status.OK;      
     }
 
-    
+    public Status sortear() {
+        if (estado == EstadosSorteo.FINALIZADO) 
+            return Status.ERROR;
 
+        Random random = new Random();
+        int nEntradas = this.nEntradas;
+
+        while (nEntradas > 0) {
+            int numeroAleatorio = random.nextInt(participantes.size());
+
+            Participante ganador = participantes.get(numeroAleatorio);
+
+            int ents_participante = ganador.getNumEntradas();
+
+            while (nEntradas > 0 && ents_participante > 0) {
+                nEntradas -= 1;
+                ents_participante -= 1;
+                
+                codigos.add(UUID.randomUUID());
+
+                /*notificar ganador */
+            }            
+        }
+
+        return Status.OK;
+    }
+
+    public abstract boolean validarEntrada(Comprada entrada, UUID codigo);
+
+    public List<UUID> getCodigos() {
+        return codigos;
+    }
 
 
     

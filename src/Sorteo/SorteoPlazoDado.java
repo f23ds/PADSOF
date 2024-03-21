@@ -9,7 +9,7 @@ public class SorteoPlazoDado extends Sorteo {
     
     public SorteoPlazoDado(int nEntradas, LocalDate fInicioInscripcion, LocalDate fFinInscripcion,
             Collection<Participante> participantes, LocalDate fInicio, LocalDate fFinal) {
-        super(nEntradas, fInicioInscripcion, fFinInscripcion, participantes);
+        super(nEntradas, fInicioInscripcion, fFinInscripcion);
         this.fInicio = fInicio;
         this.fFinal = fFinal;
     }
