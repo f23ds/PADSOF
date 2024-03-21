@@ -122,5 +122,5 @@ public abstract class Sala {
         this.dim = new Dimensiones(ancho, largo, alto);
     }
 
-
+}
    
