@@ -32,7 +32,12 @@ public class ClienteRegistrado extends Usuario {
     this.notificaciones = notificaciones;
   }
 
-  
+  /* FIXME: se implementa con la interfaz gráfica */
+  public ArrayList<Notificacion> verNotificaciones() {
+    return null;
+  }
+
+  /* GETTERS Y SETTERS */
   /**
    * Getter de atributo dni
    * @return dni

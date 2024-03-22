@@ -131,6 +131,16 @@ public abstract class Exposicion {
     return 0.0;
   }
 
+  /* TODO: COMPRAR ENTRADA? */
+  public Status comprarEntrada(Comprada aComprar) {
+    return Status.OK;
+  }
+
+  /* TODO: VENDER ENTRADA */
+  public Status venderEntrada(Entrada aVender) {
+    return Status.OK;
+  }
+
   /**
    * Función para calcular el número de entradas que se han vendido para una fecha 
    * y hora en específico.
@@ -153,6 +163,16 @@ public abstract class Exposicion {
     }
 
     return numEntradasTotal;
+  }
+
+  /* TODO: publicar */
+  public void publicar() {
+    return;
+  }
+
+  /* TODO: cancelar */
+  public void cancelar() {
+    return;
   }
 
   /* GETTERS Y SETTERS */
