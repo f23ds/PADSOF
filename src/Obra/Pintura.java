@@ -1,5 +1,7 @@
 package Obra;
 
+import Utils.*;
+
 public class Pintura extends Obra{
     private String tecnica;
     private Temperatura temp;
@@ -10,8 +12,8 @@ public class Pintura extends Obra{
         super(nombre, autor, anio, propia, poliza, ancho, largo, alto);
 
         this.tecnica = tecnica;
-        this.temp = Temperatura(tempMin, tempMax);
-        this.hum = Humedad(humMin, humMax);
+        this.temp = new Temperatura(tempMin, tempMax);
+        this.hum = new Humedad(humMin, humMax);
 
     }
 

@@ -20,6 +20,7 @@ public abstract class Sorteo {
         this.nEntradas = nEntradas;
         this.fInicioInscripcion = fInicioInscripcion;
         this.fFinInscripcion = fFinInscripcion;
+        estado = EstadosSorteo.ACTIVO;
         participantes = new ArrayList<Participante>();
         codigos = new ArrayList<>();
     }
@@ -105,9 +106,17 @@ public abstract class Sorteo {
             }            
         }
 
+        this.estado = EstadosSorteo.FINALIZADO;
+
         return Status.OK;
     }
 
+    /**
+     * Valida la entrada para un codigo de sorteo concreto. 
+     * @param entrada entrada que se quiere comprar
+     * @param codigo codigo del sorteo
+     * @return true si es válida, false en caso contrario
+     */
     public abstract boolean validarEntrada(Comprada entrada, UUID codigo);
 
     public List<UUID> getCodigos() {

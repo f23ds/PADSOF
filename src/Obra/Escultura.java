@@ -1,5 +1,7 @@
 package Obra;
 
+import Utils.*;
+
 public class Escultura extends Obra {
 
     private String material;
@@ -12,8 +14,8 @@ public class Escultura extends Obra {
         super(nombre, autor, anio, propia, poliza, ancho, largo, alto);
 
         this.material = material;
-        this.temp = Temperatura(tempMin, tempMax);
-        this.hum = Humedad(humMin, humMax);
+        this.temp = new Temperatura(tempMin, tempMax);
+        this.hum = new Humedad(humMin, humMax);
 
     }
 

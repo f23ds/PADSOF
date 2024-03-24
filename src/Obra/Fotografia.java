@@ -1,5 +1,7 @@
 package Obra;
 
+import Utils.*;
+
 public class Fotografia extends Obra {
     private TipoFotografia tipo;
     private Temperatura temp;
@@ -10,8 +12,8 @@ public class Fotografia extends Obra {
         super(nombre, autor, anio, propia, poliza, ancho, largo, alto);
 
         this.tipo = tipo;
-        this.temp = Temperatura(tempMin, tempMax);
-        this.hum = Humedad(humMin, humMax);
+        this.temp = new Temperatura(tempMin, tempMax);
+        this.hum = new Humedad(humMin, humMax);
     }
 
     public Fotografia(String nombre, String autor, int anio, boolean propia, String poliza, TipoFotografia tipo,

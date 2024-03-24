@@ -1,4 +1,7 @@
 package Obra;
+
+import Exposicion.Exposicion;
+import Utils.*;
 /**
  * Esta clase engloba los diferentes tipos de los que puede ser una obra.
  */
@@ -32,7 +35,7 @@ public abstract class Obra {
         this.propia = propia;
         this.poliza = poliza;
         this.estado = EstadosObra.ALMACEN;
-        dim = Dimensiones(ancho, largo, alto);
+        dim = new Dimensiones(ancho, largo, alto);
     }
 
     /**
