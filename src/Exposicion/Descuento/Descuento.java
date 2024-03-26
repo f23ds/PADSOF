@@ -28,9 +28,21 @@ public abstract class Descuento {
 
   /**
    * Setter del atributo descuento
-   * @param descuento 
+   * @param descuento
    */
   public void setDescuento(double descuento) {
     this.descuento = descuento;
   }
+
+  /**
+   * Método abstracto para saber si el tipo de un descuento es por antelación
+   * @return true, false según si es por antelación o no
+   */
+  public abstract boolean isPorAntelacion();
+
+  /**
+   * Método abstracto para saber si el tipo de un descuento es por compra
+   * @return true, false según si es por compra o no
+   */
+  public abstract boolean isPorCompra();
 }

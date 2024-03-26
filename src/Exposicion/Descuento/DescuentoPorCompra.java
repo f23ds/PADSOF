@@ -2,7 +2,7 @@ package Exposicion.Descuento;
 
 /**
  * Esta clase da soporte a los descuentos por antelación
- * 
+ *
  * @author Fabio Desio
  */
 public class DescuentoPorCompra extends Descuento {
@@ -30,9 +30,27 @@ public class DescuentoPorCompra extends Descuento {
 
   /**
    * Setter del atributo nEntradas
-   * @param nEntradas 
+   * @param nEntradas
    */
   public void setNEntradas(int nEntradas) {
     this.nEntradas = nEntradas;
+  }
+
+  /**
+   * Método que indica si el descuento es por antelación
+   *
+   * @return true si es por antelación, false en caso contrario
+   */
+  public boolean isPorAntelacion() {
+    return false;
+  }
+
+  /**
+   * Método que indica si el descuento es por compra
+   *
+   * @return true si es por compra, false en caso contrario
+   */
+  public boolean isPorCompra() {
+    return true;
   }
 }

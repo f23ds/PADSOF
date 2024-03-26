@@ -1,0 +1,16 @@
+EXPOSICIÓN:
+
+- Métodos como cancelar, terminar o interrumpir van en función del tiempo. ¿Qué tenemos que hacer con ellos?
+
+- En cancelar, ¿check con el horario o check de la fecha de fin antes?
+
+- Comprar y vender entrada.
+
+COMPRADA:
+
+- FIXME del TPV en devolverDinero
+
+CLIENTE REGISTRADO: 
+
+- verNotificaciones() se implementa con la interfaz gráfica?
+

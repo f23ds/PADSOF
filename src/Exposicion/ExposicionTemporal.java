@@ -2,6 +2,7 @@ package Exposicion;
 
 import Exposicion.Descuento.Descuento;
 import Sorteo.Sorteo;
+import Utils.Status;
 import java.time.*;
 import java.util.ArrayList;
 
@@ -42,8 +43,70 @@ public class ExposicionTemporal extends Exposicion {
     this.fFinal = fFinal;
   }
 
+  /**
+   * Método para cambiar el estado de una exposición temporal a COMENZADA
+   *
+   * @return OK, ERROR en caso de cambio satisfactorio
+   */
+  public Status comenzar() {
+    if (this.getEstado() != EstadoExposicion.EN_CREACION) return Status.ERROR;
 
-  /* TODO: Métodos clase exposición temporal */
+    /* Setteamos la exposición a COMENZADA, sabiendo que ha estado EN_CREACION */
+    this.setEstado(EstadoExposicion.COMENZADA);
+
+    return Status.OK;
+  }
+
+  /**
+   * Método para prorrogar la fecha de una exposición temporal
+   *
+   * @return OK, ERROR en caso de prórroga satisfactoria
+   */
+  public Status prorrogar(LocalDate fecha) {
+    if (this.getEstado() != EstadoExposicion.COMENZADA) return Status.ERROR;
+    if (this.getfFinal().isAfter(fecha)) return Status.ERROR;
+
+    /* Setteamos la fecha estipulada */
+    this.setfFinal(fecha);
+
+    return Status.OK;
+  }
+
+  /**
+   * Método para cambiar el estado de una exposición temporal a CANCELADA
+   *
+   * @return OK, ERROR en caso de cambio satisfactorio
+   */
+  public Status cancelar() {
+    if (this.getEstado() != EstadoExposicion.COMENZADA) return Status.ERROR;
+
+    /* Setteamos la exposición a CANCELADA, sabiendo que ha sido COMENZADA */
+    this.setEstado(EstadoExposicion.CANCELADA);
+
+    /* Cambiamos su fecha de fin a dentro de una semana */
+    /* TODO: quizá habría que hacer check con el horario, además de checkear la fecha de fin antes */
+    this.setfFinal(LocalDate.now().plusWeeks(1));
+
+    return Status.OK;
+  }
+
+  /**
+   * Método para cambiar el estado de una exposición temporal a TERMINADA
+   * Se entiende que se hace la comprobación de la fecha antes de llamar al método
+   *
+   * @return OK, ERROR en caso de cambio satisfactorio
+   */
+  public Status terminar() {
+    if (
+      this.getEstado() != EstadoExposicion.COMENZADA ||
+      this.getEstado() != EstadoExposicion.CANCELADA
+    ) return Status.ERROR;
+
+    /* Setteamos la exposición a TERMINADA, sabiendo que ha sido COMENZADA o CANCELADA */
+    this.setEstado(EstadoExposicion.TERMINADA);
+
+    return Status.OK;
+  }
 
   /* GETTERS Y SETTERS */
   /**
@@ -78,10 +141,21 @@ public class ExposicionTemporal extends Exposicion {
     this.fFinal = fFinal;
   }
 
-  public boolean isPermanente(){
-      return false;
+  /**
+   * Método que indica si la exposición es permanente
+   *
+   * @return true si es permanente, false en caso contrario
+   */
+  public boolean isPermanente() {
+    return false;
   }
-  public boolean isTemporal(){
-      return true;
+
+  /**
+   * Método que indica si la exposición es temporal
+   *
+   * @return true si es temporal, false en caso contrario
+   */
+  public boolean isTemporal() {
+    return true;
   }
 }

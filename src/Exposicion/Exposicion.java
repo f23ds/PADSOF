@@ -67,7 +67,7 @@ public abstract class Exposicion {
    * @return OK, ERROR según si se ha realizado la inserción
    */
   public Status aniadirDescuento(Descuento desc) {
-    boolean esPorCompra = desc instanceof DescuentoPorCompra ? true : false;
+    boolean esPorCompra = desc.isPorCompra() ? true : false;
 
     /* Checkeamos que no esté lleno el array de descuentos */
     if (descuentosLlenos()) return Status.ERROR;
@@ -90,7 +90,7 @@ public abstract class Exposicion {
 
   /**
    * Función para quitar un descuento del array de descuentos
-   * @param porCompra booleano que nos indica si queremos quitar el 
+   * @param porCompra booleano que nos indica si queremos quitar el
    * descuento por compra o por antelación.
    * @return OK, ERROR según si se ha quitado el descuento del array o no
    */
@@ -104,7 +104,7 @@ public abstract class Exposicion {
   }
 
   /**
-   * Función para calcular el número de entradas totales que se han vendido 
+   * Función para calcular el número de entradas totales que se han vendido
    * para el periodo entre dos fechas en una exposición.
    * @param fInicio fecha de inicio
    * @param fFin fecha de fin
@@ -115,7 +115,6 @@ public abstract class Exposicion {
 
     /* Iteramos por el array de entradas */
     for (Entrada entrada : this.entradas) {
-
       /* Comprobamos las condiciones */
       LocalDate fecha = entrada.getFecha();
       if (fecha.isBefore(fInicio) || fecha.isAfter(fFin)) continue;
@@ -142,7 +141,7 @@ public abstract class Exposicion {
   }
 
   /**
-   * Función para calcular el número de entradas que se han vendido para una fecha 
+   * Función para calcular el número de entradas que se han vendido para una fecha
    * y hora en específico.
    * @param fechaExp fecha a calcular
    * @param horaExp hora a calcular
@@ -165,17 +164,40 @@ public abstract class Exposicion {
     return numEntradasTotal;
   }
 
-  /* TODO: publicar */
-  public void publicar() {
-    return;
+  /**
+   * Método para cambiar el estado de la exposición de EN_CREACIÓN a DISPONIBLE
+   *
+   * @return OK, ERROR según si se ha cambiado el estado satisfactoriamente
+   */
+  public Status publicar() {
+    if (this.estado != EstadoExposicion.EN_CREACION) return Status.ERROR;
+
+    /* Setteamos el estado de la exposición a DISPONIBLE */
+    this.setEstado(EstadoExposicion.DISPONIBLE);
+
+    return Status.OK;
   }
 
-  /* TODO: cancelar */
-  public void cancelar() {
-    return;
-  }
+  /* -------------------- MÉTODOS ABSTRACTOS ---------------------- */
+  /**
+   * Método abstracto para saber si el tipo de una exposición es permanente
+   * @return true, false según si es permanente o no
+   */
+  public abstract boolean isPermanente();
 
-  /* GETTERS Y SETTERS */
+  /**
+   * Método abstracto para saber si el tipo de una exposición es temporal
+   * @return true, false según si es temporal o no
+   */
+  public abstract boolean isTemporal();
+
+  /**
+   * Método abstracto para cancelar una exposición según condicinoes
+   * @return OK, ERROR según si se ha cancelado satisfactoriamente o no
+   */
+  public abstract Status cancelar();
+
+  /* -------------------- GETTERS Y SETTERS ----------------------- */
   /**
    * Getter del atributo nombre
    * @return String con el nombre de la exposición
@@ -304,6 +326,21 @@ public abstract class Exposicion {
     this.tiposObras = tiposObras;
   }
 
-  public abstract boolean isPermanente();
-  public abstract boolean isTemporal();
+  /* --------------- MÉTODOS PARA AÑADIR O QUITAR ELEMENTOS DE ARRAYLISTS ------------------ */
+  /**
+   * Método para añadir entradas al array de entradas
+   * @param entradas a añadir
+   */
+  public void aniadirEntradas(Entrada... entradas) {
+    Collections.addAll(this.entradas, entradas);
+  }
+
+  /**
+   * Método para añadir tipos de obras al array de tipos de obras
+   * @param tipos a añadir
+   */
+  public void aniadirTiposObras(TipoObraExposicion... tipos) {
+    Collections.addAll(this.tiposObras, tipos);
+  }
+
 }
