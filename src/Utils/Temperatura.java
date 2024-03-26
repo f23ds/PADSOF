@@ -57,4 +57,19 @@ public class Temperatura {
     public void setMax(float max) {
         this.max = max;
     }
+
+    /**
+     * Checker para comprobar si dos temperaturas son compatibles
+     * 
+     * @param temp a checkear
+     * @return true o false
+     */
+    public boolean checkTemperatura(Temperatura temp) {
+
+        if (temp == null) {
+            return false;
+        }
+
+        return this.min > temp.min || this.max < temp.max;
+    }
 }

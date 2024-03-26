@@ -29,4 +29,9 @@ public class Audiovisual extends Obra {
     public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
+
+    public boolean necesitaClimatizacion() {
+        return false;
+    }
+
 }

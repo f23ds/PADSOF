@@ -119,4 +119,11 @@ public class SalaClimatizada extends Sala{
 
         return Status.OK;
     }
+
+    /**
+     * la sala es climatizada
+     */
+    public boolean isClimatizada() {
+        return true;
+    }
 }

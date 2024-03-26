@@ -86,5 +86,15 @@ public class Dimensiones {
     }
 
 
-}
+    /**
+     * Checker para comprobar si dos dimensiones son compatibles
+     * 
+     * @param dim a checkear
+     * @return true o false
+     */
+    public boolean checkDimensiones(Dimensiones dim) {
 
+        return this.alto < dim.alto || this.ancho < dim.ancho || this.largo < dim.largo;
+    }
+
+}

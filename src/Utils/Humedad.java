@@ -56,4 +56,19 @@ public class Humedad {
     public void setMax(float max) {
         this.max = max;
     }
+
+    /**
+     * Checker para comprobar si dos humedades son compatibles
+     * 
+     * @param humedad a checkear
+     * @return true o false
+     */
+    public boolean checkHumedad(Humedad humedad) {
+
+        if (humedad == null) {
+            return false;
+        }
+
+        return this.min > humedad.min || this.max < humedad.max;
+    }
 }

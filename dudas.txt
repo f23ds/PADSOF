@@ -14,3 +14,6 @@ CLIENTE REGISTRADO:
 
 - verNotificaciones() se implementa con la interfaz gráfica?
 
+OBRAS: 
+- si una obra tiene requisitos de temperatura o humedad solo puede ir en sala climatizada?
+

@@ -1,6 +1,5 @@
 package Sorteo;
 
-import Utils.*;
 import Entrada.*;
 
 import java.util.*;

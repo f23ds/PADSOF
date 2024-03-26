@@ -2,6 +2,8 @@ package Exposicion;
 
 import Entrada.*;
 import Exposicion.Descuento.*;
+import Sala.*;
+import Obra.*;
 import Sorteo.*;
 import Utils.*;
 
@@ -22,6 +24,8 @@ public abstract class Exposicion implements Serializable{
   private Sorteo sorteo;
   private ArrayList<Entrada> entradas;
   private ArrayList<TipoObraExposicion> tiposObras;
+  private List<Sala> salas;
+  private List<Obra> obras;
 
   /**
    * Constructor para la clase abstracta Exposición
@@ -53,6 +57,54 @@ public abstract class Exposicion implements Serializable{
     this.sorteo = sorteo;
     this.entradas = new ArrayList<Entrada>();
     this.tiposObras = new ArrayList<TipoObraExposicion>();
+  }
+
+  /**
+   * getter del atributo salas
+   * 
+   * @return salas de la exposicion
+   */
+  public List<Sala> getSalas() {
+    return salas;
+  }
+
+  /**
+   * añade salas en las que se realiza la exposicion
+   * 
+   * @param salas a añadir
+   */
+  public void addSalas(Sala ... salas) {
+
+    this.salas.addAll(Arrays.asList(salas));;
+  }
+
+  /**
+   * getter del atributo obras
+   * 
+   * @return obras de la exposicion
+   */
+  public List<Obra> getObras() {
+    return obras;
+  }
+
+  /**
+   * añade obras a la exposicion
+   * 
+   * @param obras a añadir
+   */
+  public void addObras(Obra ... obras) {
+
+    this.obras.addAll(Arrays.asList(obras));;
+  }
+
+  /**
+   * quita obras de la exposicion
+   * 
+   * @param obras a añadir
+   */
+  public void removeObras(Obra ... obras) {
+
+    this.obras.removeAll(Arrays.asList(obras));;
   }
 
   /**

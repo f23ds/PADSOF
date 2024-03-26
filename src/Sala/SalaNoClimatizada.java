@@ -54,4 +54,11 @@ public class SalaNoClimatizada extends Sala{
 
         return Status.OK;
     }
+
+    /**
+     * la sala no es climatizada
+     */
+    public boolean isClimatizada() {
+        return false;
+    }
 }

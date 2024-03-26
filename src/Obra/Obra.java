@@ -3,6 +3,8 @@ package Obra;
 import java.io.Serializable;
 
 import Exposicion.Exposicion;
+import Sala.Sala;
+import Sala.SalaClimatizada;
 import Utils.*;
 /**
  * Esta clase engloba los diferentes tipos de los que puede ser una obra.
@@ -148,5 +150,90 @@ public abstract class Obra implements Serializable{
      */
     public void setPoliza(String poliza) {
         this.poliza = poliza;
+    }
+
+    public abstract boolean necesitaClimatizacion();
+
+    public boolean exponer(Exposicion exposicion) {
+        boolean status = false;
+
+        if (estado != EstadosObra.ALMACEN) {
+            return false;
+        }
+
+        if (exposicion.isTemporal()) {
+            if (!propia) {
+                return false;
+            }
+        }
+
+        for (Sala s : exposicion.getSalas()) {
+            if (s.getDimensiones().checkDimensiones(dim)) {
+                if (this.necesitaClimatizacion()){
+                    if (!s.isClimatizada())
+                        continue;
+                    ObraClimatizada obra = (ObraClimatizada) this;
+                    SalaClimatizada sala = (SalaClimatizada) s;
+
+                    if (obra.getTemp() != null) {
+                        if (!sala.getTemperatura().checkTemperatura(obra.getTemp()))
+                            continue;
+                    }
+
+                    if (obra.getHumedad() != null) {
+                        if (!sala.getHumedad().checkHumedad(obra.getHumedad()))
+                            continue;
+                    }
+
+                    exposicion.addObras(this);
+
+                    status = true;
+
+                }
+            }
+        }
+
+        return status;
+
+    }
+
+    public Status retirar() {
+        if (estado != EstadosObra.EXPOSICION)
+            return Status.ERROR;
+
+        this.exposicion.removeObras(this);
+
+        this.exposicion = null;
+
+        estado = EstadosObra.RETIRADA;
+
+        return Status.OK;
+    }
+
+    public Status almacenar() {
+        if (estado != EstadosObra.RETIRADA)
+            return Status.ERROR;
+
+        estado = EstadosObra.ALMACEN;
+
+        return Status.OK;
+    }
+
+    public Status restaurar() {
+        if (estado != EstadosObra.ALMACEN || !propia)
+            return Status.ERROR;
+
+        estado = EstadosObra.ENRESTAURACION;
+
+        return Status.OK;
+    }
+
+    public Status prestar() {
+        if (estado != EstadosObra.RETIRADA && estado != EstadosObra.ALMACEN && !propia)
+            return Status.ERROR;
+
+        estado = EstadosObra.PRESTADA;
+
+        return Status.OK;
     }
 }

@@ -122,6 +122,10 @@ public abstract class Sala {
         this.dim = new Dimensiones(ancho, largo, alto);
     }
 
-
+    /**
+     * Comprueba si una sala es climatizada
+     * @return true o false
+     */
+    public abstract boolean isClimatizada();
     
 }
