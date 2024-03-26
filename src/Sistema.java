@@ -363,6 +363,58 @@ public final class Sistema implements Serializable{
 
         return temporales;
     }
+
+    /**
+     * Guardar los datos cargados en el sistema
+     */
+    public void guardarDatos(){
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("sistema.dat"))) {
+            out.writeObject(this);
+            System.out.println("Objeto Sistema serializado correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Cargar los datos del sistema si existen previos
+     */
+    public void cargarDatos(){
+        File file = new File("sistema.dat");
+
+        // Verificar si el archivo existe
+        if (!file.exists())
+            return;
+
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("sistema.dat"))) {
+            Sistema sistema = (Sistema) in.readObject();
+            copiarSistema(sistema);
+            instance = sistema;
+            
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * metodo para copiar un sistema en otro
+     * 
+     * @param otro sistema a copiar
+     */
+    private void copiarSistema(Sistema otro) {
+        // Copiando los atributos
+        entradas = new ArrayList<>(otro.entradas);
+        horario = new Horario(otro.horario.getApertura(), otro.horario.getCierre());
+        clientes = new ArrayList<>(otro.clientes);
+        empleados = new ArrayList<>(otro.empleados);
+        gestor = otro.gestor; // Referencia al mismo objeto Gestor
+        usuarioActivo = otro.usuarioActivo; // Referencia al mismo objeto Usuario
+        obras = new ArrayList<>(otro.obras);
+        salas = new ArrayList<>(otro.salas);
+        sorteos = new ArrayList<>(otro.sorteos);
+        exposiciones = new ArrayList<>(otro.exposiciones);
+    }
     
     
 }
