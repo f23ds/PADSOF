@@ -5,7 +5,6 @@ import Entrada.*;
 
 import java.util.*;
 import java.time.*;
-import java.util.Collection;
 
 public class SorteoFechaHora extends Sorteo {
     private LocalDate fecha;
