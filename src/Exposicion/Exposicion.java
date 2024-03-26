@@ -303,4 +303,7 @@ public abstract class Exposicion {
   public void setTiposObras(ArrayList<TipoObraExposicion> tiposObras) {
     this.tiposObras = tiposObras;
   }
+
+  public abstract boolean isPermanente();
+  public abstract boolean isTemporal();
 }

@@ -1,6 +1,7 @@
 package Usuario;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Clase para dar soporte a cliente registrado
@@ -11,7 +12,7 @@ public class ClienteRegistrado extends Usuario {
 
   private String dni;
   private boolean recibirNotificaciones;
-  private ArrayList<Notificacion> notificaciones;
+  private Collection<Notificacion> notificaciones;
 
   /**
    * Constructor de la clase cliente registrado
@@ -23,17 +24,16 @@ public class ClienteRegistrado extends Usuario {
   public ClienteRegistrado(
     String password,
     String dni,
-    boolean recibirNotificaciones,
-    ArrayList<Notificacion> notificaciones
+    boolean recibirNotificaciones
   ) {
     super(password);
     this.dni = dni;
     this.recibirNotificaciones = recibirNotificaciones;
-    this.notificaciones = notificaciones;
+    this.notificaciones = new ArrayList<>();
   }
 
   /* FIXME: se implementa con la interfaz gráfica */
-  public ArrayList<Notificacion> verNotificaciones() {
+  public Collection<Notificacion> verNotificaciones() {
     return null;
   }
 
@@ -58,7 +58,7 @@ public class ClienteRegistrado extends Usuario {
    * Getter de atributo notificaciones
    * @return notificaciones
    */
-  public ArrayList<Notificacion> getNotificaciones() {
+  public Collection<Notificacion> getNotificaciones() {
     return notificaciones;
   }
 
@@ -82,7 +82,7 @@ public class ClienteRegistrado extends Usuario {
    * Setter del atributo notificaciones
    * @param notificaciones
    */
-  public void setNotificaciones(ArrayList<Notificacion> notificaciones) {
+  public void setNotificaciones(Collection<Notificacion> notificaciones) {
     this.notificaciones = notificaciones;
   }
 }

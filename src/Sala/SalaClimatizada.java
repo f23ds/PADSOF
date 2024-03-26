@@ -116,5 +116,7 @@ public class SalaClimatizada extends Sala{
 
         subsala1 = new SalaClimatizada(aforo1, numTomasCorriente1, new Dimensiones(ancho1, dim.getLargo(), dim.getAlto()), t1, h1);
         subsala2 = new SalaClimatizada(aforo2, numTomasCorriente2, new Dimensiones(ancho2, dim.getLargo(), dim.getAlto()), t2, h2);
+
+        return Status.OK;
     }
 }

@@ -77,4 +77,11 @@ public class ExposicionTemporal extends Exposicion {
   public void setfFinal(LocalDate fFinal) {
     this.fFinal = fFinal;
   }
+
+  public boolean isPermanente(){
+      return false;
+  }
+  public boolean isTemporal(){
+      return true;
+  }
 }
