@@ -1,5 +1,6 @@
 package Horario;
 
+import java.io.Serializable;
 import java.time.*;
 
 /**
@@ -8,7 +9,7 @@ import java.time.*;
  * @author Victor Sanz de Vergas
  * 
  */
-public class Horario {
+public class Horario implements Serializable{
     private LocalTime apertura; /*Hora de apertura del centro de exposiciones */
     private LocalTime cierre; /*Hora de cierre del centro de exposiciones */
     

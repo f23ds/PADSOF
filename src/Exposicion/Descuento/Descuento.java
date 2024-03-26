@@ -1,11 +1,13 @@
 package Exposicion.Descuento;
 
+import java.io.Serializable;
+
 /**
  * Esta clase provee de soporte para los descuentos
  *
  * @author Fabio Desio
  */
-public abstract class Descuento {
+public abstract class Descuento implements Serializable{
 
   private double descuento;
 

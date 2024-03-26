@@ -1,11 +1,13 @@
 package Usuario;
 
+import java.io.Serializable;
+
 /**
  * Clase para dar soporte a las notificaciones
  * 
  * @author Fabio Desio
  */
-public class Notificacion {
+public class Notificacion implements Serializable{
 
   private Empleado emisor;
   private String cuerpo;

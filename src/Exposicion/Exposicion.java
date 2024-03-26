@@ -4,6 +4,8 @@ import Entrada.*;
 import Exposicion.Descuento.*;
 import Sorteo.*;
 import Utils.*;
+
+import java.io.Serializable;
 import java.time.*;
 import java.util.*;
 
@@ -12,7 +14,7 @@ import java.util.*;
  *
  * @author Fabio Desio
  */
-public abstract class Exposicion {
+public abstract class Exposicion implements Serializable{
 
   private String nombre, autor, descr;
   private EstadoExposicion estado;

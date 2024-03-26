@@ -1,11 +1,13 @@
 package Usuario;
 
+import java.io.Serializable;
+
 /**
  * Clase para dar soporte a la clase de usuario
  *
  * @author Fabio Desio
  */
-public abstract class Usuario {
+public abstract class Usuario implements Serializable{
 
   private String password;
 

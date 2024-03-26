@@ -1,11 +1,12 @@
 package Entrada;
 
 import java.time.*;
+import java.io.*;
 
 /**
  * Clase para dar soporte a la entrada
  */
-public class Entrada {
+public class Entrada implements Serializable {
 
   private int numEntradas;
   private float precioCompra;

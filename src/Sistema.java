@@ -1,5 +1,5 @@
 
-import java.io.Serializable;
+import java.io.*;
 import java.util.*;
 import Sorteo.*;
 import Sala.*;

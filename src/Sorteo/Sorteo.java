@@ -4,11 +4,12 @@ import java.util.*;
 
 import Entrada.Comprada;
 
+import java.io.Serializable;
 import java.time.*;
 
 import Utils.*;
 
-public abstract class Sorteo {
+public abstract class Sorteo implements Serializable{
     private int nEntradas;
     private LocalDate fInicioInscripcion; 
     private LocalDate fFinInscripcion;

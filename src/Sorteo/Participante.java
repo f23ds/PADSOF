@@ -1,8 +1,10 @@
 package Sorteo;
 
+import java.io.Serializable;
+
 import Usuario.ClienteRegistrado;
 
-public class Participante {
+public class Participante implements Serializable{
     private int numEntradas;
     private ClienteRegistrado cliente;
 

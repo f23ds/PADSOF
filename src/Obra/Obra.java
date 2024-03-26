@@ -1,11 +1,13 @@
 package Obra;
 
+import java.io.Serializable;
+
 import Exposicion.Exposicion;
 import Utils.*;
 /**
  * Esta clase engloba los diferentes tipos de los que puede ser una obra.
  */
-public abstract class Obra {
+public abstract class Obra implements Serializable{
 
     public String nombre;
     public String autor;
